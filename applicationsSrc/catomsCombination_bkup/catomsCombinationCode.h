@@ -11,7 +11,7 @@ using namespace Catoms3D;
 const int confSize=3;
 
 class Solution {
-    public:
+public:
     uint8_t step;
     Cell3DPosition fromPos;
     Cell3DPosition toPos;
@@ -19,13 +19,13 @@ class Solution {
 };
 
 class ModuleConfig {
-    public:
+public:
     array<Cell3DPosition,confSize> pos;
     //uint8_t orientCode;
     //bool isConnected;
-    //    ModuleData(uint16_t _id, Cell3DPosition _pos, uint8_t _orientCode,bool _hm):id(_id),pos(_pos),orientCode(_orientCode),hasMoved(_hm) {};
+//    ModuleData(uint16_t _id, Cell3DPosition _pos, uint8_t _orientCode,bool _hm):id(_id),pos(_pos),orientCode(_orientCode),hasMoved(_hm) {};
     //ModuleData(Cell3DPosition _pos),pos(_pos) {};
-    
+
     ModuleConfig() {
         for (auto &p:pos) {
             p.set(numeric_limits<short>::max(),numeric_limits<short>::max(),numeric_limits<short>::max());
@@ -44,20 +44,20 @@ class ModuleConfig {
 };
 
 class Node {
-    public:
+public:
     uint16_t level;
     ModuleConfig modules;
     uint32_t id;
     map<uint32_t,vector<pair<Cell3DPosition,Cell3DPosition>>> mobilesPerParent; ///< List of parent with array of mobiles and itself !
-    
+
     Node(uint16_t _level,const ModuleConfig &conf,uint32_t _parent,const vector<pair<Cell3DPosition,Cell3DPosition>> &motions):id(0),level(_level),modules(conf) {
         mobilesPerParent[_parent]=motions;
     };
     Node(const Node &src,const Cell3DPosition &mobileFrom,const Cell3DPosition &mobileTo):
-    id(0),level(src.level),modules(src.modules) {
+        id(0),level(src.level),modules(src.modules) {
         mobilesPerParent.begin()->second.push_back({mobileFrom,mobileTo});
     }
-    
+
     bool operator==(const Node& other);
     /*ModuleData operator[](int i) { return modules[i]; };*/
     void addParent(uint32_t p,const vector<pair<Cell3DPosition,Cell3DPosition>> &motions) {
@@ -65,23 +65,22 @@ class Node {
     }
     friend ostream& operator<<(ostream& os, const Node &node);
     void config(ostream &os);
-    
+
 };
 
 class CatomsCombinationCode : public Catoms3DBlockCode {
-    private:
+private:
     FCCLattice *lattice;
     bool isMobile;
     Catoms3DWorld *wrld;
-    public :
-    Catoms3D::Catoms3DBlock *catom;
+public :
     CatomsCombinationCode(Catoms3DBlock *host):Catoms3DBlockCode(host) {
         wrld=Catoms3DWorld::getWorld();
         isMobile=false;
         lattice = (FCCLattice*)(Catoms3D::getWorld()->lattice);
     };
     ~CatomsCombinationCode() {};
-    
+
     void startup();
     void parseUserBlockElements(TiXmlElement *config);
     void worldRun();

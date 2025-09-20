@@ -66,7 +66,6 @@ y the module
     bool rotating;
     Cell3DPosition targetPos;
 
-    int getNeighborsCount() const;
     bool hasLeftNeighbor() const;
     bool hasRightNeighbor() const;
     bool hasReachedLineTail() const;

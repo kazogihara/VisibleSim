@@ -43,13 +43,12 @@ public:
      * \param msg Message received b
 y the module
      * \param sender Connector that has received the message and hence that is connected to the sender */
-    // void processReceivedMessage(MessagePtr msg, P2PNetworkInterface* sender);
+    void processReceivedMessage(MessagePtr msg, P2PNetworkInterface* sender);
 
     void startup() override;
-    // void processLocalEvent(EventPtr pev) override;
+    void processLocalEvent(EventPtr pev) override;
     void onBlockSelected() override;
-    void onMotionEnd() override;
-    void onNeighborChanged(uint64_t face, int action) override;
+
 
     static BlockCode *buildNewBlockCode(BuildingBlock *host) {
         return (new LightWalkCatoms3DBlockCode((Catoms3DBlock*)host));
@@ -66,9 +65,7 @@ y the module
     bool rotating;
     Cell3DPosition targetPos;
 
-    int getNeighborsCount() const;
     bool hasLeftNeighbor() const;
-    bool hasRightNeighbor() const;
     bool hasReachedLineTail() const;
     bool isLineTip() const;
     bool isAdjacentToPosition(const Cell3DPosition& pos) const;

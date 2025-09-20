@@ -44,15 +44,22 @@ void LightWalkCatoms3DBlockCode::onBlockSelected() {
 void LightWalkCatoms3DBlockCode::startup() {
     stringstream info;
     info << "Starting ";
-    int neghborsCount = getNeighborsCount();
-    if(neghborsCount == 0){
-        setColor(WHITE);
-    }else if(neghborsCount == 1){
-        setColor(YELLOW);
-    }else if(neghborsCount == 2){
-        setColor(GREEN);
-    }else if (neghborsCount == 3){
-        setColor(BLUE);
+
+    catom->setColor(GREEN);
+    if(catom->canMoveTo(catom->position + Cell3DPosition(1, 0, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(1, 0, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 1, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 1, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(-1, 1, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(-1, 1, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, -1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, -1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
     }
     // relocated = false;
     // if (not hasLeftNeighbor()) {
@@ -94,39 +101,39 @@ void LightWalkCatoms3DBlockCode::startup() {
 }
 
 void LightWalkCatoms3DBlockCode::onMotionEnd() {
-    // if(catom->canMoveTo(catom->position + Cell3DPosition(1, 0, 0))){
-    //     catom->moveTo(catom->position + Cell3DPosition(1, 0, 0));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 1, 0))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 1, 0));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(-1, 1, 0))){
-    //     catom->moveTo(catom->position + Cell3DPosition(-1, 1, 0));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, -1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, -1));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
-    // }
+    if(catom->canMoveTo(catom->position + Cell3DPosition(1, 0, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(1, 0, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 1, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 1, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(-1, 1, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(-1, 1, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, -1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, -1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }
 }
 
 void LightWalkCatoms3DBlockCode::onNeighborChanged(uint64_t face, int action) {
-    // if(catom->canMoveTo(catom->position + Cell3DPosition(1, 0, 0))){
-    //     catom->moveTo(catom->position + Cell3DPosition(1, 0, 0));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 1, 0))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 1, 0));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(-1, 1, 0))){
-    //     catom->moveTo(catom->position + Cell3DPosition(-1, 1, 0));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, -1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, -1));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
-    // }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
-    //     catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
-    // }
+    if(catom->canMoveTo(catom->position + Cell3DPosition(1, 0, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(1, 0, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 1, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 1, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(-1, 1, 0))){
+        catom->moveTo(catom->position + Cell3DPosition(-1, 1, 0));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, -1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, -1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }else if(catom->canMoveTo(catom->position + Cell3DPosition(0, 0, 1))){
+        catom->moveTo(catom->position + Cell3DPosition(0, 0, 1));
+    }
 }
 
 // void LightWalkCatoms3DBlockCode::processReceivedMessage(MessagePtr msg,
@@ -291,10 +298,6 @@ void LightWalkCatoms3DBlockCode::onNeighborChanged(uint64_t face, int action) {
 //     }
 
 // }
-
-int LightWalkCatoms3DBlockCode::getNeighborsCount() const {
-    return catom->getLocalNeighborhoodState().count();
-}
 
 bool LightWalkCatoms3DBlockCode::hasLeftNeighbor() const {
     return catom->getNeighborOnCell(catom->position + Cell3DPosition(-1, 0, 0)) != NULL;
