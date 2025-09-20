@@ -44,16 +44,27 @@ void LightWalkCatoms3DBlockCode::onBlockSelected() {
 void LightWalkCatoms3DBlockCode::startup() {
     stringstream info;
     info << "Starting ";
-    int neghborsCount = getNeighborsCount();
-    if(neghborsCount == 0){
+    int neighborCount = getNeighborsCount();
+    if(neighborCount == 0){
         setColor(WHITE);
-    }else if(neghborsCount == 1){
+    }else if(neighborCount == 1){
         setColor(YELLOW);
-    }else if(neghborsCount == 2){
+    }else if(neighborCount == 2){
         setColor(GREEN);
-    }else if (neghborsCount == 3){
+    }else if (neighborCount == 3){
         setColor(BLUE);
+    }else if(neighborCount == 4){
+        setColor(RED);
+    }else if (neighborCount == 5){   
+        setColor(PINK);
+    }else if (neighborCount == 6){   
+        setColor(ORANGE);
+    }else if (neighborCount == 7){   
+        setColor(MAGENTA);
+    }else if (neighborCount == 8){   
+        setColor(GOLD);
     }
+    
     // relocated = false;
     // if (not hasLeftNeighbor()) {
     //     // Catom has to get moving UPWARD then X-WARD
